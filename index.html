@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+ 
+<head>
+  <meta charset="utf-8">
+  <title>PAGAL Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body{
+      background-color: black;
+      background-image: url(calcu.jpg);
+    }
+    table{
+      margin: auto;
+      margin-top: 100px;
+      background-color: lightskyblue;
+      width: 350px;
+      height: 340px;
+      padding-left: 10px;
+      padding-right: 10px;
+      border-radius: 10px;
+    }
+    input[type=button]{
+      font-family: 'Courier New', Courier, monospace;
+      font-size: medium;
+      color: black;
+      background-color: snow;
+      width: 100%;
+      border-radius: 5px;
+      height: 70%;
+      box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    }
+    #result{
+      background-color: #dcdbe1;
+      color: black;
+      border-radius: 5px;
+      width: 98%;
+      height: 65%;
+      box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    }
+    #c{
+      background-color: crimson;
+    }
+    #special{
+      background-color: gold;
+    }
+
+  </style>
+</head>
+
+<body>
+<table class="container"> <!-- ROW 1 -->
+  <tr>
+    <td colspan="3"> <input id="result" type="text"> </td>
+    <td> <input id="c" type="button" value="C" onclick="clear()"> </td>
+  </tr>
+  <tr> <!-- ROW2 -->
+    <td> <input type="button" value="1" onclick="solve('1')"> </td>
+    <td> <input type="button" value="2" onclick="solve('2')"> </td>
+    <td> <input type="button" value="3" onclick="solve('3')"> </td>
+    <td> <input id="special" type="button" value="+" onclick="add()"> </td>
+  </tr>
+  <tr> <!-- ROW3 -->
+    <td> <input type="button" value="4" onclick="solve('4')"> </td>
+    <td> <input type="button" value="5" onclick="solve('5')"> </td>
+    <td> <input type="button" value="6" onclick="solve('6')"> </td>
+    <td> <input id="special" type="button" value="-" onclick="sub()"> </td>
+  </tr>
+  <tr> <!-- ROW4 -->
+    <td> <input type="button" value="7" onclick="solve('7')"> </td>
+    <td> <input type="button" value="8" onclick="solve('8')"> </td>
+    <td> <input type="button" value="9" onclick="solve('9')"> </td>
+    <td> <input id="special" type="button" value="*" onclick="multip()"> </td>
+  </tr>
+  <tr><!-- ROW5 -->
+    <td> <input id="special" type="button" value="." onclick="solve('.')"> </td>
+    <td> <input type="button" value="0" onclick="solve('0')"> </td>
+    <td> <input id="c" type="button" value="=" onclick="equals()"> </td>
+    <td> <input id="special" type="button" value="/" onclick="div()"> </td>
+  </tr>
+
+</table>
+
+  <script>
+    let currentInput = "";
+    let currentOperator = "";
+
+        function clear() {
+          currentInput ='';
+          currentOperator = '';
+          document.getElementById('result').value = '';
+        }
+        function solve(number) {
+            currentInput += number;
+            document.getElementById('result').value = currentInput;
+        }
+        function add() {
+            currentOperator = "+";
+            currentInput += currentOperator;
+            document.getElementById('result').value = currentInput;
+        }
+        function sub() {
+            currentOperator = "-";
+            currentInput += currentOperator;
+            document.getElementById('result').value = currentInput;
+        }
+        function multip() {
+            currentOperator = "*";
+            currentInput += currentOperator;
+            document.getElementById('result').value = currentInput;
+        }
+
+        function div() {
+            currentOperator = "/";
+            currentInput += currentOperator;
+            document.getElementById('result').value = currentInput;
+        }
+        function equals() {
+            const result = eval(currentInput);
+            console.log(result);
+            document.getElementById('result').value = result;
+            currentInput.toString();
+            currentOperator = '';
+        }
+
+
+
+
+
+
+  </script>
+</body>
